@@ -29,7 +29,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   /* ---------- Paleta e tipografia ---------- */
   :root {
@@ -40,8 +40,10 @@
     --texto: #3B3530;         /* marrom acinzentado do texto do catálogo dela */
     --texto-suave: #6F635C;
     --filete: rgba(191, 142, 54, 0.45);
-    --serif: "Cormorant Garamond", "Cormorant", Garamond, Georgia, serif;
-    --sans: "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
+    /* A Prata é a mesma fonte do texto da logo. Ela tem um peso só, então nada
+       aqui pede negrito: peça sempre 400, senão o navegador engorda a letra. */
+    --serif: "Prata", Georgia, serif;
+    --sans: "DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
     --largura: 38rem;
   }
 
@@ -60,7 +62,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.2; margin: 0; }
 
   a { color: var(--ouro-escuro); }
 
@@ -69,8 +71,9 @@
   img { max-width: 100%; height: auto; display: block; }
   [hidden] { display: none !important; }
 
-  /* A Cormorant usa algarismo antigo por padrão ("110" vira "IIO").
-     Todo número em serifada precisa de algarismo de altura uniforme. */
+  /* A Prata já traz algarismo de altura uniforme, mas a serifada de reserva
+     (Georgia) usa algarismo antigo, em que "110" vira "IIO". A regra abaixo
+     protege esse caso. */
   .num,
   .preco,
   .manut .valor,
@@ -79,7 +82,7 @@
   .miolo { max-width: var(--largura); margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
 
   /* Filete curto e dourado sob os títulos de seção */
-  h2 { font-size: 2rem; text-align: center; letter-spacing: 0.01em; }
+  h2 { font-size: 1.625rem; text-align: center; letter-spacing: 0.01em; }
   h2::after {
     content: "";
     display: block;
@@ -132,8 +135,8 @@
     overflow: visible;
     clip-path: none;
     white-space: normal;
-    font-size: 2.75rem;
-    font-weight: 500;
+    font-size: 2.125rem;
+    font-weight: 400;
     letter-spacing: 0.06em;
   }
 
@@ -141,20 +144,20 @@
   .abertura { text-align: center; padding: 2.5rem 1.5rem 4.5rem; }
   .abertura .apresenta {
     font-family: var(--serif);
-    font-size: 1.75rem;
-    line-height: 1.3;
+    font-size: 1.375rem;
+    line-height: 1.4;
     margin: 0 auto;
-    max-width: 20rem;
+    max-width: 19rem;
   }
   /* Parágrafo mais longo que o de cima: entrelinha um pouco maior e linha um
      pouco mais curta, para a leitura não cansar. */
   .abertura .promessa {
     font-family: var(--serif);
-    font-size: 1.1875rem;
-    line-height: 1.62;
+    font-size: 1rem;
+    line-height: 1.7;
     color: var(--texto-suave);
     margin: 0 auto;
-    max-width: 24rem;
+    max-width: 22rem;
   }
 
   /* ---------- Para agendar ---------- */
@@ -167,13 +170,6 @@
 
   /* ---------- Procedimentos (tabela de valores) ---------- */
   .procedimentos { padding: 3.5rem 0 1.5rem; }
-  .explica-manut {
-    margin: 1.75rem auto 0;
-    max-width: 30rem;
-    text-align: center;
-    font-size: 0.9375rem;
-    color: var(--texto-suave);
-  }
   .lista { list-style: none; margin: 2.25rem 0 0; padding: 0; }
   .proc {
     padding: 1.5rem 0 1.75rem;
@@ -184,13 +180,15 @@
   .proc-linha {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.875rem;
   }
+  /* Mesmo arco da galeria, para a lista e as fotos combinarem */
   .proc-foto {
     flex: 0 0 auto;
-    width: 5rem;
-    height: 5rem;
+    width: 7rem;
+    height: 7rem;
     object-fit: cover;
+    border-radius: 50% 50% 8px 8px / 50% 50% 8px 8px;
   }
   .proc-topo {
     flex: 1 1 auto;
@@ -200,11 +198,11 @@
     align-items: baseline;
     gap: 0.75rem;
   }
-  .proc h3 { font-size: 1.5rem; }
+  .proc h3 { font-size: 1.1875rem; }
   .preco {
     font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.1875rem;
+    font-weight: 400;
     color: var(--ouro-escuro);
     white-space: nowrap;
     line-height: 1.15;
@@ -220,7 +218,7 @@
     line-height: 1.2;
     letter-spacing: 0.01em;
   }
-  .preco.texto { font-size: 1.125rem; font-weight: 500; white-space: normal; }
+  .preco.texto { font-size: 1rem; font-weight: 400; white-space: normal; }
 
   /* Manutenção: os dois prazos são os próprios botões, cada um já leva o
      valor certo para a mensagem do WhatsApp. */
@@ -254,7 +252,7 @@
   .manut a:hover { color: var(--ouro-escuro); }
   .manut .valor {
     font-family: var(--serif);
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--ouro-escuro);
   }
 
@@ -298,35 +296,42 @@
 
   /* ---------- Galeria ---------- */
   .galeria { padding: 3.5rem 0 2rem; }
-  /* Duas colunas em qualquer tela: as fotos são pensadas em pares. */
+  /* Uma coluna só: a foto precisa ser grande o bastante para a cliente ver o fio. */
   .grade {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
     margin-top: 2.25rem;
   }
   .grade figure { margin: 0; }
-  .grade img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+  /* Arco no topo. O raio horizontal é metade da largura; o vertical é esse
+     mesmo valor lido como porcentagem da altura, que na proporção 4/5 dá 40%. */
+  .grade img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 50% 50% 12px 12px / 40% 40% 12px 12px;
+  }
   .grade figcaption {
     font-size: 0.875rem;
     color: var(--texto-suave);
     text-align: center;
-    margin-top: 0.4rem;
+    margin-top: 0.7rem;
   }
   .antes-depois {
-    grid-column: 1 / -1;
     padding: 0.5rem 0.5rem 0.75rem;
     border: 1px solid var(--filete);
+    border-radius: 14px;
     background: rgba(246, 228, 147, 0.25);
   }
-  .antes-depois img { aspect-ratio: auto; }
-  .antes-depois figcaption { font-family: var(--serif); font-size: 1.125rem; color: var(--texto); margin-top: 0.6rem; }
+  .antes-depois img { aspect-ratio: auto; border-radius: 10px; }
+  .antes-depois figcaption { font-family: var(--serif); font-size: 1rem; color: var(--texto); margin-top: 0.7rem; }
 
   /* ---------- Rodapé ---------- */
   .rodape { margin-top: 3rem; padding-bottom: 3rem; text-align: center; }
   .rodape .nome-rodape {
     font-family: var(--serif);
-    font-size: 2rem;
+    font-size: 1.625rem;
     letter-spacing: 0.06em;
     line-height: 1.15;
     margin: 0;
@@ -346,7 +351,7 @@
   .horario { margin: 2rem auto 0; border-collapse: collapse; }
   .horario caption {
     font-family: var(--serif);
-    font-size: 1.25rem;
+    font-size: 1.0625rem;
     color: var(--texto);
     margin-bottom: 0.75rem;
   }
@@ -361,7 +366,7 @@
   .horario td {
     text-align: left;
     font-family: var(--serif);
-    font-size: 1.1875rem;
+    font-size: 1rem;
   }
 
   .contatos {
@@ -380,7 +385,7 @@
     min-height: 2.75rem;
     padding: 0 0.5rem;
     font-family: var(--serif);
-    font-size: 1.25rem;
+    font-size: 1.0625rem;
     text-decoration: none;
     color: var(--ouro-escuro);
     touch-action: manipulation;
@@ -392,16 +397,17 @@
   @media (min-width: 45rem) {
     .topo { padding-top: 4rem; }
     .abertura { padding-bottom: 5.5rem; }
-    .abertura .apresenta { font-size: 2.125rem; max-width: 26rem; }
-    .abertura .promessa { font-size: 1.3125rem; max-width: 31rem; }
+    h2 { font-size: 1.875rem; }
+    .abertura .apresenta { font-size: 1.75rem; max-width: 25rem; }
+    .abertura .promessa { font-size: 1.125rem; max-width: 29rem; }
     .proc { padding: 1.75rem 0 2rem; }
     .proc-linha { gap: 1.5rem; }
-    .proc-foto { width: 6.5rem; height: 6.5rem; }
-    .proc h3 { font-size: 1.75rem; }
-    .preco { font-size: 1.75rem; }
+    .proc-foto { width: 8rem; height: 8rem; }
+    .proc h3 { font-size: 1.375rem; }
+    .preco { font-size: 1.375rem; }
     .botao { width: fit-content; min-width: 15rem; }
-    .grade { gap: 1rem; }
-    .antes-depois { justify-self: center; width: 100%; max-width: 24rem; }
+    .grade { gap: 2.25rem; }
+    .grade figure { width: 100%; max-width: 26rem; margin: 0 auto; }
     .rodape-corpo {
       display: flex;
       justify-content: center;
@@ -442,13 +448,13 @@
       <p>O valor do sinal não é reembolsável em caso de desistência ou falta, pois o horário é reservado exclusivamente para você.</p>
       <p>Caso precise remarcar, é necessário avisar com no mínimo 24 horas de antecedência.</p>
       <p>A manutenção dos cílios é feita a cada 15 a 20 dias.</p>
+      <p>A manutenção é feita com pelo menos <span class="num">50</span>% dos fios. Se tiver menos que isso, é necessário remoção e nova aplicação.</p>
     </div>
   </section>
 
   <section class="procedimentos" aria-labelledby="t-proc">
     <div class="miolo">
       <h2 id="t-proc">Procedimentos</h2>
-      <p class="explica-manut">A manutenção é feita com pelo menos <span class="num">50</span>% dos fios. Se tiver menos que isso, é necessário remoção e nova aplicação.</p>
       <ul class="lista" id="lista-procedimentos"></ul>
     </div>
   </section>
@@ -621,15 +627,16 @@
 
   // Um prazo de manutenção: o próprio prazo é o link, e a mensagem já sai com ele.
   function linkManutencao(nome, dias, valor) {
+    const prazo = "até " + dias + " dias";
     const mensagem = "Oi Amanda! Vi no site e queria agendar a manutenção do " + nome +
-      " (" + dias + " dias, " + valor + "). Tem horário?";
+      " (" + prazo + ", " + valor + "). Tem horário?";
     return el("a", {
       href: linkWhatsApp(mensagem),
       target: "_blank",
       rel: "noopener",
-      "aria-label": "Agendar manutenção do " + nome + " de " + dias + " dias pelo WhatsApp, " + valor,
+      "aria-label": "Agendar manutenção do " + nome + " de " + prazo + " pelo WhatsApp, " + valor,
     }, [
-      document.createTextNode(dias + " dias"),
+      document.createTextNode(prazo),
       el("span", { class: "valor", texto: valor }),
     ]);
   }
