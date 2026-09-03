@@ -61,6 +61,13 @@
   img { max-width: 100%; height: auto; display: block; }
   [hidden] { display: none !important; }
 
+  /* A Cormorant usa algarismo antigo por padrão ("110" vira "IIO").
+     Todo número em serifada precisa de algarismo de altura uniforme. */
+  .num,
+  .preco,
+  .manut .valor,
+  .horario td { font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; }
+
   .miolo { max-width: var(--largura); margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
 
   /* Filete curto e dourado sob os títulos de seção */
@@ -72,6 +79,30 @@
     height: 1px;
     margin: 0.9rem auto 0;
     background: var(--ouro);
+  }
+
+  /* Ornamento da marca: dois filetes e um losango, como no filete da logo */
+  .ornamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    width: 9rem;
+    margin: 2rem auto;
+  }
+  .ornamento::before,
+  .ornamento::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--ouro);
+    opacity: 0.75;
+  }
+  .ornamento span {
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--ouro);
+    transform: rotate(45deg);
   }
 
   /* ---------- Topo ---------- */
@@ -99,11 +130,19 @@
   }
 
   /* ---------- Abertura ---------- */
-  .abertura { text-align: center; padding: 1.5rem 1.5rem 3.5rem; }
-  .abertura p {
+  .abertura { text-align: center; padding: 2.5rem 1.5rem 4.5rem; }
+  .abertura .apresenta {
     font-family: var(--serif);
-    font-size: 1.5rem;
-    line-height: 1.35;
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin: 0 auto;
+    max-width: 20rem;
+  }
+  .abertura .promessa {
+    font-family: var(--serif);
+    font-size: 1.1875rem;
+    line-height: 1.55;
+    color: var(--texto-suave);
     margin: 0 auto;
     max-width: 22rem;
   }
@@ -116,94 +155,121 @@
   .agendar p { text-align: center; max-width: 26rem; margin: 1.25rem auto 0; }
   .agendar p + p { margin-top: 0.75rem; }
 
-  /* ---------- Procedimentos (lista estilo cardápio) ---------- */
+  /* ---------- Procedimentos (tabela de valores) ---------- */
   .procedimentos { padding: 3.5rem 0 1.5rem; }
+  .explica-manut {
+    margin: 1.75rem auto 0;
+    max-width: 30rem;
+    text-align: center;
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+  }
   .lista { list-style: none; margin: 2.25rem 0 0; padding: 0; }
-  .proc { padding: 1.75rem 0 2rem; border-top: 1px solid var(--filete); }
+  .proc {
+    padding: 1.5rem 0 1.75rem;
+    border-top: 1px solid var(--filete);
+  }
   .proc:last-child { border-bottom: 1px solid var(--filete); }
+  /* Linha da tabela: miniatura do resultado, nome e preço */
+  .proc-linha {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .proc-foto {
+    flex: 0 0 auto;
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+  }
   .proc-topo {
+    flex: 1 1 auto;
+    min-width: 0;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 1rem;
+    gap: 0.75rem;
   }
-  .proc h3 { font-size: 1.75rem; }
+  .proc h3 { font-size: 1.5rem; }
   .preco {
     font-family: var(--serif);
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: var(--ouro-escuro);
     white-space: nowrap;
     line-height: 1.15;
     text-align: right;
   }
-  .preco .moeda { font-size: 0.6em; font-weight: 400; margin-right: 0.15em; vertical-align: 0.12em; }
+  .preco .moeda { font-size: 0.62em; font-weight: 400; margin-right: 0.15em; vertical-align: 0.12em; }
   .preco .prefixo {
     display: block;
     font-family: var(--sans);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 400;
     color: var(--texto-suave);
     line-height: 1.2;
-    margin-bottom: 0.1rem;
+    letter-spacing: 0.01em;
   }
-  .preco.texto { font-size: 1.125rem; font-weight: 500; white-space: normal; text-align: right; }
+  .preco.texto { font-size: 1.125rem; font-weight: 500; white-space: normal; }
+
+  /* Manutenção: os dois prazos são os próprios botões, cada um já leva o
+     valor certo para a mensagem do WhatsApp. */
   .manut {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.35rem 1.25rem;
-    margin: 0.35rem 0 0;
+    align-items: center;
+    gap: 0 1.5rem;
+    margin: 0.9rem 0 0;
+  }
+  .manut .rotulo {
+    flex: 1 0 100%;
     font-size: 0.9375rem;
     color: var(--texto-suave);
   }
-  .nota { margin: 0.5rem 0 0; font-size: 0.9375rem; color: var(--texto-suave); max-width: 30rem; }
-  .manut .rotulo { font-style: italic; }
+  .manut a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35em;
+    min-height: 2.75rem;
+    padding-top: 0.1rem;
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+    text-decoration: underline;
+    text-decoration-color: var(--ouro);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    touch-action: manipulation;
+    transition: color 0.2s ease;
+  }
+  .manut a:hover { color: var(--ouro-escuro); }
   .manut .valor {
     font-family: var(--serif);
     font-size: 1.25rem;
-    color: var(--texto);
-    margin-left: 0.3em;
+    color: var(--ouro-escuro);
   }
+
+  .nota { margin: 0.9rem 0 0; font-size: 0.9375rem; color: var(--texto-suave); }
 
   .botao {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 3rem;
-    margin-top: 1.5rem;
-    padding: 0.75rem 1.5rem;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
     background: transparent;
     border: 1px solid var(--ouro-escuro);
     color: var(--ouro-escuro);
     font-family: var(--sans);
     font-size: 1rem;
     font-weight: 500;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-decoration: none;
     border-radius: 2px;
     touch-action: manipulation;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
   .botao:hover, .botao:active { background: var(--ouro-escuro); color: var(--fundo); }
-
-  .manut-link {
-    margin: 0.5rem 0 0;
-    font-size: 0.9375rem;
-    color: var(--texto-suave);
-  }
-  .manut-link a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 2.75rem;
-    color: var(--texto-suave);
-    text-decoration: underline;
-    text-decoration-color: var(--ouro);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.25em;
-    touch-action: manipulation;
-  }
-  .manut-link a:hover { color: var(--ouro-escuro); }
 
   /* ---------- Cuidados ---------- */
   .cuidados { padding: 3.5rem 0 1rem; }
@@ -222,6 +288,7 @@
 
   /* ---------- Galeria ---------- */
   .galeria { padding: 3.5rem 0 2rem; }
+  /* Duas colunas em qualquer tela: as fotos são pensadas em pares. */
   .grade {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -246,48 +313,96 @@
   .antes-depois figcaption { font-family: var(--serif); font-size: 1.125rem; color: var(--texto); margin-top: 0.6rem; }
 
   /* ---------- Rodapé ---------- */
-  .rodape {
-    margin-top: 4rem;
-    padding: 1rem 0 3rem;
-    text-align: center;
-  }
+  .rodape { margin-top: 3rem; padding-bottom: 3rem; text-align: center; }
   .rodape .nome-rodape {
     font-family: var(--serif);
-    font-size: 1.75rem;
+    font-size: 2rem;
     letter-spacing: 0.06em;
-    margin: 0 0 1.25rem;
+    line-height: 1.15;
+    margin: 0;
   }
-  .rodape address { font-style: normal; margin: 0; }
-  .horario { margin: 1.75rem auto 0; border-collapse: collapse; }
-  .horario caption { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 0.5rem; }
-  .horario th, .horario td { padding: 0.2rem 0.6rem; font-weight: 400; }
-  .horario th { text-align: right; color: var(--texto-suave); }
-  .horario td { text-align: left; }
-  .contatos { margin: 2rem 0 0; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
-  .contatos span { color: var(--texto-suave); font-size: 0.9375rem; }
+  .rodape address {
+    font-style: normal;
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+    margin: 0.6rem 0 0;
+  }
+  .rodape-filete {
+    height: 1px;
+    max-width: 13rem;
+    margin: 2.25rem auto;
+    background: var(--filete);
+  }
+  .horario { margin: 2rem auto 0; border-collapse: collapse; }
+  .horario caption {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--texto);
+    margin-bottom: 0.75rem;
+  }
+  .horario th,
+  .horario td { padding: 0.2rem 0; font-weight: 400; }
+  .horario th {
+    text-align: right;
+    padding-right: 0.85rem;
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+  }
+  .horario td {
+    text-align: left;
+    font-family: var(--serif);
+    font-size: 1.1875rem;
+  }
+
+  .contatos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+  }
   .contatos a {
     display: inline-flex;
     align-items: center;
+    gap: 0.6rem;
     min-height: 2.75rem;
     padding: 0 0.5rem;
-    text-decoration: none;
     font-family: var(--serif);
-    font-size: 1.375rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--ouro-escuro);
     touch-action: manipulation;
   }
-  .contatos a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+  .contatos a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
+  .contatos .icone { flex: 0 0 auto; width: 1.375rem; height: 1.375rem; }
 
   /* ---------- Telas maiores ---------- */
   @media (min-width: 45rem) {
     .topo { padding-top: 4rem; }
-    .abertura p { font-size: 1.75rem; max-width: 26rem; }
-    .grade { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .antes-depois { width: 100%; max-width: 24rem; margin: 0 auto; }
-    .botao { width: auto; min-width: 16rem; margin-left: auto; margin-right: auto; }
-    .proc { text-align: center; }
-    .proc-topo { justify-content: center; }
-    .manut { justify-content: center; }
-    .nota { margin-left: auto; margin-right: auto; }
+    .abertura { padding-bottom: 5.5rem; }
+    .abertura .apresenta { font-size: 2.125rem; max-width: 26rem; }
+    .abertura .promessa { font-size: 1.375rem; max-width: 28rem; }
+    .proc { padding: 1.75rem 0 2rem; }
+    .proc-linha { gap: 1.5rem; }
+    .proc-foto { width: 6.5rem; height: 6.5rem; }
+    .proc h3 { font-size: 1.75rem; }
+    .preco { font-size: 1.75rem; }
+    .botao { width: fit-content; min-width: 15rem; }
+    .grade { gap: 1rem; }
+    .antes-depois { justify-self: center; width: 100%; max-width: 24rem; }
+    .rodape-corpo {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 4rem;
+      text-align: left;
+    }
+    .rodape-corpo address { margin-top: 0.4rem; }
+    .horario { margin: 0; }
+    .horario caption { text-align: left; }
+    .contatos { flex-direction: row; gap: 1.5rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -305,7 +420,9 @@
 
 <main>
   <section class="abertura">
-    <p>Lash designer e especialista em extensão de cílios. Estudante de biomedicina.</p>
+    <p class="apresenta">Lash designer e especialista em extensão de cílios. Estudante de biomedicina.</p>
+    <div class="ornamento" aria-hidden="true"><span></span></div>
+    <p class="promessa">Atendimento personalizado, unindo técnica, segurança e delicadeza para valorizar o olhar de cada cliente.</p>
   </section>
 
   <section class="agendar" aria-labelledby="t-agendar">
@@ -321,6 +438,7 @@
   <section class="procedimentos" aria-labelledby="t-proc">
     <div class="miolo">
       <h2 id="t-proc">Procedimentos</h2>
+      <p class="explica-manut">A manutenção é feita com pelo menos <span class="num">50</span>% dos fios. Se tiver menos que isso, é necessário remoção e nova aplicação. O valor de <span class="num">20</span> dias é maior porque há menos fios e mais aplicação.</p>
       <ul class="lista" id="lista-procedimentos"></ul>
     </div>
   </section>
@@ -332,7 +450,7 @@
         <li>Higienize seus cílios todos os dias com shampoo próprio para extensão. A limpeza remove oleosidade, resíduos de maquiagem e evita acúmulo de sujeira que pode prejudicar a durabilidade.</li>
         <li>Evite esfregar, puxar ou coçar os olhos. As extensões são delicadas e o atrito pode causar queda precoce.</li>
         <li>Após lavar, seque delicadamente e escove com a escovinha para manter os fios alinhados e bonitos.</li>
-        <li>E não esqueça: a manutenção deve ser feita a cada 15 a 20 dias para manter o efeito sempre impecável.</li>
+        <li>E não esqueça: a manutenção deve ser feita a cada <span class="num">15</span> a <span class="num">20</span> dias para manter o efeito sempre impecável.</li>
       </ul>
     </div>
   </section>
@@ -347,25 +465,53 @@
 
 <footer class="rodape">
   <div class="miolo">
+    <div class="ornamento" aria-hidden="true"><span></span></div>
+
     <p class="nome-rodape">Amanda Vilar</p>
-    <address>Avenida Tomás Lopes de Camargo, 317<br>São Paulo</address>
 
-    <table class="horario">
-      <caption>Horário de atendimento</caption>
-      <tbody>
-        <tr><th scope="row">Segunda a quarta</th><td>13h às 18h</td></tr>
-        <tr><th scope="row">Quinta e sexta</th><td>9h às 18h</td></tr>
-        <tr><th scope="row">Sábado</th><td>8h às 14h</td></tr>
-        <tr><th scope="row">Domingo</th><td>fechado</td></tr>
-      </tbody>
-    </table>
+    <div class="rodape-filete" aria-hidden="true"></div>
 
-    <p class="contatos">
-      <span>Instagram</span>
-      <a href="https://www.instagram.com/amandavilar.biomed" target="_blank" rel="noopener">@amandavilar.biomed</a>
-      <span>WhatsApp</span>
-      <a href="https://wa.me/5511953511566" target="_blank" rel="noopener">(11) 95351-1566</a>
-    </p>
+    <div class="rodape-corpo">
+      <address>Avenida Tomás Lopes de Camargo, <span class="num">317</span><br>São Paulo</address>
+
+      <table class="horario">
+        <caption>Horário de atendimento</caption>
+        <tbody>
+          <tr><th scope="row">Segunda a quarta</th><td>13h às 18h</td></tr>
+          <tr><th scope="row">Quinta e sexta</th><td>9h às 18h</td></tr>
+          <tr><th scope="row">Sábado</th><td>8h às 14h</td></tr>
+          <tr><th scope="row">Domingo</th><td>fechado</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rodape-filete" aria-hidden="true"></div>
+
+    <ul class="contatos">
+      <li>
+        <a href="https://www.instagram.com/amandavilar.biomed" target="_blank" rel="noopener"
+           aria-label="Abrir o Instagram @amandavilar.biomed">
+          <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/>
+            <circle cx="12" cy="12" r="4.1"/>
+            <circle cx="17.1" cy="6.9" r="1.05" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>@amandavilar.biomed</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://wa.me/5511953511566" target="_blank" rel="noopener"
+           aria-label="Abrir uma conversa no WhatsApp com a Amanda">
+          <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M3.2 20.8L5.5 16.2A8.4 8.4 0 1 1 8.9 19Z"/>
+            <path d="M9.4 8.9c-.5 1.65.2 3.3 1.5 4.6 1.3 1.3 2.95 2 4.6 1.5" stroke-width="2.1"/>
+          </svg>
+          <span class="num">(11) 95351-1566</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </footer>
 
@@ -382,19 +528,40 @@
   //   aplicacao     -> valor da aplicação (texto livre: "R$110" ou "a partir de R$150")
   //   manutencao15  -> valor da manutenção com 15 dias
   //   manutencao20  -> valor da manutenção com 20 dias
+  //   foto          -> foto do resultado, ao lado do nome (pode deixar "")
+  //   fotoAlt       -> descrição da foto para leitores de tela
   //   nota          -> observação curta que aparece embaixo do preço (opcional)
   // Deixe manutencao15 e manutencao20 como "" quando não tiver manutenção.
   const PROCEDIMENTOS = [
-    { nome: "Brasileiro",      aplicacao: "R$110",              manutencao15: "R$70", manutencao20: "R$80" },
-    { nome: "Volume soft",     aplicacao: "R$110",              manutencao15: "R$70", manutencao20: "R$80" },
-    { nome: "Híbrido",         aplicacao: "R$130",              manutencao15: "R$80", manutencao20: "R$90" },
-    { nome: "Foxy eyes",       aplicacao: "R$140",              manutencao15: "R$85", manutencao20: "R$95" },
-    { nome: "Limpeza de pele", aplicacao: "a partir de R$150",  manutencao15: "",     manutencao20: "" },
-    { nome: "Remoção",         aplicacao: "R$50",               manutencao15: "",     manutencao20: "",
-      nota: "A remoção deve ser feita somente por uma profissional qualificada para evitar danos aos fios naturais." },
+    {
+      nome: "Brasileiro", aplicacao: "R$110", manutencao15: "R$70", manutencao20: "R$80",
+      foto: "fotos/Brasileiro.jpg", fotoAlt: "Olho com extensão de cílios no efeito brasileiro",
+    },
+    {
+      nome: "Volume soft", aplicacao: "R$110", manutencao15: "R$70", manutencao20: "R$80",
+      foto: "fotos/Volumesoft.jpg", fotoAlt: "Olho com extensão de cílios volume soft",
+    },
+    {
+      nome: "Híbrido", aplicacao: "R$130", manutencao15: "R$80", manutencao20: "R$90",
+      foto: "fotos/Hibrido.jpg", fotoAlt: "Olho com extensão de cílios híbrida",
+    },
+    {
+      nome: "Foxy eyes", aplicacao: "R$140", manutencao15: "R$85", manutencao20: "R$95",
+      foto: "fotos/Foxyeyes.jpg", fotoAlt: "Olhos com extensão de cílios foxy eyes",
+    },
+    {
+      nome: "Remoção", aplicacao: "R$50", manutencao15: "", manutencao20: "",
+      foto: "", fotoAlt: "",
+      nota: "A remoção deve ser feita somente por uma profissional qualificada para evitar danos aos fios naturais.",
+    },
+    {
+      nome: "Limpeza de pele", aplicacao: "a partir de R$150", manutencao15: "", manutencao20: "",
+      foto: "fotos/limpezadepele.jpg", fotoAlt: "Pele do rosto depois da limpeza de pele",
+    },
   ];
 
   // Fotos da galeria, na ordem em que aparecem. Os arquivos ficam na pasta fotos/.
+  // A galeria tem duas colunas, então cada duas fotos seguidas ficam lado a lado.
   //   arquivo      -> caminho do arquivo (mantenha "fotos/" na frente)
   //   legenda      -> texto curto embaixo da foto (pode deixar "")
   //   alt          -> descrição da foto para leitores de tela e para quando a imagem não carrega
@@ -404,9 +571,9 @@
   const FOTOS = [
     { arquivo: "fotos/Brasileiro.jpg",    legenda: "Brasileiro",  alt: "Olho em close com extensão de cílios no efeito brasileiro" },
     { arquivo: "fotos/Brasileiro2.jpg",   legenda: "Brasileiro",  alt: "Olho em close com extensão de cílios no efeito brasileiro, cliente de touca rosa" },
-    { arquivo: "fotos/Volumesoft.jpg",    legenda: "Volume soft", alt: "Olho em close com extensão de cílios volume soft" },
     { arquivo: "fotos/Hibrido.jpg",       legenda: "Híbrido",     alt: "Olho em close com extensão de cílios híbrida" },
     { arquivo: "fotos/Hibrido2.jpg",      legenda: "Híbrido",     alt: "Olho em close com extensão de cílios híbrida, visto de lado" },
+    { arquivo: "fotos/Volumesoft.jpg",    legenda: "Volume soft", alt: "Olho em close com extensão de cílios volume soft" },
     { arquivo: "fotos/Foxyeyes.jpg",      legenda: "Foxy eyes",   alt: "Rosto de cliente com extensão de cílios foxy eyes nos dois olhos" },
     { arquivo: "fotos/limpezadepele.jpg", legenda: "Limpeza de pele: antes e depois", alt: "Antes e depois de limpeza de pele, com o nariz e a bochecha em close", antesDepois: true },
   ];
@@ -442,28 +609,50 @@
     return el("span", { class: "preco" }, partes);
   }
 
+  // Um prazo de manutenção: o próprio prazo é o link, e a mensagem já sai com ele.
+  function linkManutencao(nome, dias, valor) {
+    const mensagem = "Oi Amanda! Vi no site e queria agendar a manutenção do " + nome +
+      " (" + dias + " dias, " + valor + "). Tem horário?";
+    return el("a", {
+      href: linkWhatsApp(mensagem),
+      target: "_blank",
+      rel: "noopener",
+      "aria-label": "Agendar manutenção do " + nome + " de " + dias + " dias pelo WhatsApp, " + valor,
+    }, [
+      document.createTextNode(dias + " dias"),
+      el("span", { class: "valor", texto: valor }),
+    ]);
+  }
+
   function montarProcedimentos() {
     const lista = document.getElementById("lista-procedimentos");
     for (const p of PROCEDIMENTOS) {
       const temManutencao = Boolean(p.manutencao15 || p.manutencao20);
       const item = el("li", { class: "proc" });
+      const linha = el("div", { class: "proc-linha" });
 
-      item.append(el("div", { class: "proc-topo" }, [
+      if (p.foto) {
+        linha.append(el("img", {
+          class: "proc-foto",
+          src: p.foto,
+          alt: p.fotoAlt,
+          loading: "lazy",
+          width: "104",
+          height: "104",
+        }));
+      }
+
+      linha.append(el("div", { class: "proc-topo" }, [
         el("h3", { texto: p.nome }),
         elementoPreco(p.aplicacao),
       ]));
+      item.append(linha);
 
       if (temManutencao) {
         item.append(el("p", { class: "manut" }, [
-          el("span", { class: "rotulo", texto: "Manutenção" }),
-          el("span", {}, [
-            document.createTextNode("15 dias"),
-            el("span", { class: "valor", texto: p.manutencao15 }),
-          ]),
-          el("span", {}, [
-            document.createTextNode("20 dias"),
-            el("span", { class: "valor", texto: p.manutencao20 }),
-          ]),
+          el("span", { class: "rotulo", texto: "Já é cliente? Agende a manutenção:" }),
+          linkManutencao(p.nome, "15", p.manutencao15),
+          linkManutencao(p.nome, "20", p.manutencao20),
         ]));
       }
 
@@ -478,20 +667,6 @@
         rel: "noopener",
         texto: "Agendar pelo WhatsApp",
       }));
-
-      if (temManutencao) {
-        const msgManutencao = "Oi Amanda! Vi no site e queria agendar a manutenção do " + p.nome +
-          " (15 dias " + p.manutencao15 + " / 20 dias " + p.manutencao20 + "). Tem horário?";
-        item.append(el("p", { class: "manut-link" }, [
-          document.createTextNode("Já é cliente? "),
-          el("a", {
-            href: linkWhatsApp(msgManutencao),
-            target: "_blank",
-            rel: "noopener",
-            texto: "Agendar manutenção pelo WhatsApp",
-          }),
-        ]));
-      }
 
       lista.append(item);
     }
