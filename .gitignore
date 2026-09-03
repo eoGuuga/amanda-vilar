@@ -1,0 +1,7 @@
+# Ferramentas de apoio e material de referência ficam fora do site publicado
+ferramentas/
+referencias/
+
+node_modules/
+Thumbs.db
+.DS_Store

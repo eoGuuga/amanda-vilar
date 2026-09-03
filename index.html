@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amanda Vilar | Extensão de cílios em São Paulo</title>
+<meta name="description" content="Amanda Vilar, lash designer. Extensão de cílios e limpeza de pele em salão próprio, em São Paulo. Agende pelo WhatsApp.">
+<meta name="theme-color" content="#F2EFED">
+
+<!-- Prévia do link no WhatsApp, Instagram e afins -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Amanda Vilar">
+<meta property="og:title" content="Amanda Vilar | Extensão de cílios em São Paulo">
+<meta property="og:description" content="Amanda Vilar, lash designer. Extensão de cílios e limpeza de pele em salão próprio, em São Paulo. Agende pelo WhatsApp.">
+<meta property="og:url" content="https://eoguuga.github.io/amanda-vilar/">
+<meta property="og:image" content="https://eoguuga.github.io/amanda-vilar/logo/amanda-vilar-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo Amanda Vilar: monograma AV com cílios, em dourado sobre off-white">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Paleta e tipografia ---------- */
+  :root {
+    --fundo: #F2EFED;
+    --ouro: #BF8E36;          /* filetes e detalhes */
+    --ouro-escuro: #885822;   /* preços, botão, links */
+    --ouro-claro: #F6E493;    /* realce bem discreto */
+    --texto: #3B3530;         /* marrom acinzentado do texto do catálogo dela */
+    --texto-suave: #6F635C;
+    --filete: rgba(191, 142, 54, 0.45);
+    --serif: "Cormorant Garamond", "Cormorant", Garamond, Georgia, serif;
+    --sans: "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --largura: 38rem;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0; }
+
+  a { color: var(--ouro-escuro); }
+
+  :focus-visible { outline: 2px solid var(--ouro-escuro); outline-offset: 4px; }
+
+  img { max-width: 100%; height: auto; display: block; }
+  [hidden] { display: none !important; }
+
+  .miolo { max-width: var(--largura); margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+
+  /* Filete curto e dourado sob os títulos de seção */
+  h2 { font-size: 2rem; text-align: center; letter-spacing: 0.01em; }
+  h2::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin: 0.9rem auto 0;
+    background: var(--ouro);
+  }
+
+  /* ---------- Topo ---------- */
+  .topo { text-align: center; padding: 3rem 1.5rem 0.5rem; }
+  .logo { margin: 0 auto; width: min(14rem, 68vw); height: auto; }
+  /* A logo já traz o nome. O h1 fica só para leitores de tela e aparece se a logo não carregar. */
+  .topo h1 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .topo.sem-logo h1 {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    font-size: 2.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  /* ---------- Abertura ---------- */
+  .abertura { text-align: center; padding: 1.5rem 1.5rem 3.5rem; }
+  .abertura p {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1.35;
+    margin: 0 auto;
+    max-width: 22rem;
+  }
+
+  /* ---------- Para agendar ---------- */
+  .agendar {
+    background: rgba(191, 142, 54, 0.08);
+    padding: 3rem 0 3.25rem;
+  }
+  .agendar p { text-align: center; max-width: 26rem; margin: 1.25rem auto 0; }
+  .agendar p + p { margin-top: 0.75rem; }
+
+  /* ---------- Procedimentos (lista estilo cardápio) ---------- */
+  .procedimentos { padding: 3.5rem 0 1.5rem; }
+  .lista { list-style: none; margin: 2.25rem 0 0; padding: 0; }
+  .proc { padding: 1.75rem 0 2rem; border-top: 1px solid var(--filete); }
+  .proc:last-child { border-bottom: 1px solid var(--filete); }
+  .proc-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .proc h3 { font-size: 1.75rem; }
+  .preco {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--ouro-escuro);
+    white-space: nowrap;
+    line-height: 1.15;
+    text-align: right;
+  }
+  .preco .moeda { font-size: 0.6em; font-weight: 400; margin-right: 0.15em; vertical-align: 0.12em; }
+  .preco .prefixo {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--texto-suave);
+    line-height: 1.2;
+    margin-bottom: 0.1rem;
+  }
+  .preco.texto { font-size: 1.125rem; font-weight: 500; white-space: normal; text-align: right; }
+  .manut {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 1.25rem;
+    margin: 0.35rem 0 0;
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+  }
+  .nota { margin: 0.5rem 0 0; font-size: 0.9375rem; color: var(--texto-suave); max-width: 30rem; }
+  .manut .rotulo { font-style: italic; }
+  .manut .valor {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--texto);
+    margin-left: 0.3em;
+  }
+
+  .botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--ouro-escuro);
+    color: var(--ouro-escuro);
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    border-radius: 2px;
+    touch-action: manipulation;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .botao:hover, .botao:active { background: var(--ouro-escuro); color: var(--fundo); }
+
+  .manut-link {
+    margin: 0.5rem 0 0;
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+  }
+  .manut-link a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--texto-suave);
+    text-decoration: underline;
+    text-decoration-color: var(--ouro);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    touch-action: manipulation;
+  }
+  .manut-link a:hover { color: var(--ouro-escuro); }
+
+  /* ---------- Cuidados ---------- */
+  .cuidados { padding: 3.5rem 0 1rem; }
+  .cuidados ul { list-style: none; margin: 2rem auto 0; padding: 0; max-width: 28rem; }
+  .cuidados li { position: relative; padding-left: 1.5rem; margin-top: 1rem; }
+  .cuidados li::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.6em;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--ouro);
+    transform: rotate(45deg);
+  }
+
+  /* ---------- Galeria ---------- */
+  .galeria { padding: 3.5rem 0 2rem; }
+  .grade {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 2.25rem;
+  }
+  .grade figure { margin: 0; }
+  .grade img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+  .grade figcaption {
+    font-size: 0.875rem;
+    color: var(--texto-suave);
+    text-align: center;
+    margin-top: 0.4rem;
+  }
+  .antes-depois {
+    grid-column: 1 / -1;
+    padding: 0.5rem 0.5rem 0.75rem;
+    border: 1px solid var(--filete);
+    background: rgba(246, 228, 147, 0.25);
+  }
+  .antes-depois img { aspect-ratio: auto; }
+  .antes-depois figcaption { font-family: var(--serif); font-size: 1.125rem; color: var(--texto); margin-top: 0.6rem; }
+
+  /* ---------- Rodapé ---------- */
+  .rodape {
+    margin-top: 4rem;
+    padding: 1rem 0 3rem;
+    text-align: center;
+  }
+  .rodape .nome-rodape {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    letter-spacing: 0.06em;
+    margin: 0 0 1.25rem;
+  }
+  .rodape address { font-style: normal; margin: 0; }
+  .horario { margin: 1.75rem auto 0; border-collapse: collapse; }
+  .horario caption { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .horario th, .horario td { padding: 0.2rem 0.6rem; font-weight: 400; }
+  .horario th { text-align: right; color: var(--texto-suave); }
+  .horario td { text-align: left; }
+  .contatos { margin: 2rem 0 0; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+  .contatos span { color: var(--texto-suave); font-size: 0.9375rem; }
+  .contatos a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 0.5rem;
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 1.375rem;
+    touch-action: manipulation;
+  }
+  .contatos a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+
+  /* ---------- Telas maiores ---------- */
+  @media (min-width: 45rem) {
+    .topo { padding-top: 4rem; }
+    .abertura p { font-size: 1.75rem; max-width: 26rem; }
+    .grade { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .antes-depois { width: 100%; max-width: 24rem; margin: 0 auto; }
+    .botao { width: auto; min-width: 16rem; margin-left: auto; margin-right: auto; }
+    .proc { text-align: center; }
+    .proc-topo { justify-content: center; }
+    .manut { justify-content: center; }
+    .nota { margin-left: auto; margin-right: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <img class="logo" src="logo/amanda-vilar-logo.svg" alt="" width="224" height="130"
+       onerror="this.hidden = true; this.closest('.topo').classList.add('sem-logo');">
+  <h1>Amanda Vilar</h1>
+</header>
+
+<main>
+  <section class="abertura">
+    <p>Lash designer e especialista em extensão de cílios. Estudante de biomedicina.</p>
+  </section>
+
+  <section class="agendar" aria-labelledby="t-agendar">
+    <div class="miolo">
+      <h2 id="t-agendar">Para agendar</h2>
+      <p>Para agendar o atendimento, é necessário um sinal de R$&nbsp;50.</p>
+      <p>O valor do sinal não é reembolsável em caso de desistência ou falta, pois o horário é reservado exclusivamente para você.</p>
+      <p>Caso precise remarcar, é necessário avisar com no mínimo 24 horas de antecedência.</p>
+      <p>A manutenção dos cílios é feita a cada 15 a 20 dias.</p>
+    </div>
+  </section>
+
+  <section class="procedimentos" aria-labelledby="t-proc">
+    <div class="miolo">
+      <h2 id="t-proc">Procedimentos</h2>
+      <ul class="lista" id="lista-procedimentos"></ul>
+    </div>
+  </section>
+
+  <section class="cuidados" aria-labelledby="t-cuidados">
+    <div class="miolo">
+      <h2 id="t-cuidados">Cuidados com os cílios</h2>
+      <ul>
+        <li>Higienize seus cílios todos os dias com shampoo próprio para extensão. A limpeza remove oleosidade, resíduos de maquiagem e evita acúmulo de sujeira que pode prejudicar a durabilidade.</li>
+        <li>Evite esfregar, puxar ou coçar os olhos. As extensões são delicadas e o atrito pode causar queda precoce.</li>
+        <li>Após lavar, seque delicadamente e escove com a escovinha para manter os fios alinhados e bonitos.</li>
+        <li>E não esqueça: a manutenção deve ser feita a cada 15 a 20 dias para manter o efeito sempre impecável.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="galeria" id="galeria" aria-labelledby="t-galeria" hidden>
+    <div class="miolo">
+      <h2 id="t-galeria">Galeria</h2>
+      <div class="grade" id="grade-fotos"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="miolo">
+    <p class="nome-rodape">Amanda Vilar</p>
+    <address>Avenida Tomás Lopes de Camargo, 317<br>São Paulo</address>
+
+    <table class="horario">
+      <caption>Horário de atendimento</caption>
+      <tbody>
+        <tr><th scope="row">Segunda a quarta</th><td>13h às 18h</td></tr>
+        <tr><th scope="row">Quinta e sexta</th><td>9h às 18h</td></tr>
+        <tr><th scope="row">Sábado</th><td>8h às 14h</td></tr>
+        <tr><th scope="row">Domingo</th><td>fechado</td></tr>
+      </tbody>
+    </table>
+
+    <p class="contatos">
+      <span>Instagram</span>
+      <a href="https://www.instagram.com/amandavilar.biomed" target="_blank" rel="noopener">@amandavilar.biomed</a>
+      <span>WhatsApp</span>
+      <a href="https://wa.me/5511953511566" target="_blank" rel="noopener">(11) 95351-1566</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // =====================================================================
+  //  DADOS DA PÁGINA: é só editar aqui. O resto do código não precisa mudar.
+  // =====================================================================
+
+  // Número do WhatsApp com DDI e DDD, só dígitos.
+  const WHATSAPP = "5511953511566";
+
+  // Procedimentos, na ordem em que aparecem na página.
+  //   nome          -> como aparece no site e na mensagem do WhatsApp
+  //   aplicacao     -> valor da aplicação (texto livre: "R$110" ou "a partir de R$150")
+  //   manutencao15  -> valor da manutenção com 15 dias
+  //   manutencao20  -> valor da manutenção com 20 dias
+  //   nota          -> observação curta que aparece embaixo do preço (opcional)
+  // Deixe manutencao15 e manutencao20 como "" quando não tiver manutenção.
+  const PROCEDIMENTOS = [
+    { nome: "Brasileiro",      aplicacao: "R$110",              manutencao15: "R$70", manutencao20: "R$80" },
+    { nome: "Volume soft",     aplicacao: "R$110",              manutencao15: "R$70", manutencao20: "R$80" },
+    { nome: "Híbrido",         aplicacao: "R$130",              manutencao15: "R$80", manutencao20: "R$90" },
+    { nome: "Foxy eyes",       aplicacao: "R$140",              manutencao15: "R$85", manutencao20: "R$95" },
+    { nome: "Limpeza de pele", aplicacao: "a partir de R$150",  manutencao15: "",     manutencao20: "" },
+    { nome: "Remoção",         aplicacao: "R$50",               manutencao15: "",     manutencao20: "",
+      nota: "A remoção deve ser feita somente por uma profissional qualificada para evitar danos aos fios naturais." },
+  ];
+
+  // Fotos da galeria, na ordem em que aparecem. Os arquivos ficam na pasta fotos/.
+  //   arquivo      -> caminho do arquivo (mantenha "fotos/" na frente)
+  //   legenda      -> texto curto embaixo da foto (pode deixar "")
+  //   alt          -> descrição da foto para leitores de tela e para quando a imagem não carrega
+  //   antesDepois  -> true quando a imagem já traz o antes e o depois juntos;
+  //                   ela aparece em destaque, na largura toda, com moldura
+  // A galeria só aparece na página quando tem pelo menos uma foto aqui.
+  const FOTOS = [
+    { arquivo: "fotos/Brasileiro.jpg",    legenda: "Brasileiro",  alt: "Olho em close com extensão de cílios no efeito brasileiro" },
+    { arquivo: "fotos/Brasileiro2.jpg",   legenda: "Brasileiro",  alt: "Olho em close com extensão de cílios no efeito brasileiro, cliente de touca rosa" },
+    { arquivo: "fotos/Volumesoft.jpg",    legenda: "Volume soft", alt: "Olho em close com extensão de cílios volume soft" },
+    { arquivo: "fotos/Hibrido.jpg",       legenda: "Híbrido",     alt: "Olho em close com extensão de cílios híbrida" },
+    { arquivo: "fotos/Hibrido2.jpg",      legenda: "Híbrido",     alt: "Olho em close com extensão de cílios híbrida, visto de lado" },
+    { arquivo: "fotos/Foxyeyes.jpg",      legenda: "Foxy eyes",   alt: "Rosto de cliente com extensão de cílios foxy eyes nos dois olhos" },
+    { arquivo: "fotos/limpezadepele.jpg", legenda: "Limpeza de pele: antes e depois", alt: "Antes e depois de limpeza de pele, com o nariz e a bochecha em close", antesDepois: true },
+  ];
+
+  // =====================================================================
+  //  Daqui para baixo é o código que monta a página.
+  // =====================================================================
+
+  function el(tag, atributos, filhos) {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(atributos || {})) {
+      if (k === "texto") e.textContent = v;
+      else e.setAttribute(k, v);
+    }
+    for (const f of filhos || []) e.append(f);
+    return e;
+  }
+
+  function linkWhatsApp(mensagem) {
+    return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensagem);
+  }
+
+  // "R$110" vira "R$" pequeno + "110" grande.
+  // "a partir de R$150" vira "a partir de" em letra pequena, em cima do valor.
+  // Qualquer outro texto fica como está.
+  function elementoPreco(valor) {
+    const m = /^(.*?)\s*R\$\s?(\d+(?:[.,]\d+)?)$/.exec(valor.trim());
+    if (!m) return el("span", { class: "preco texto", texto: valor });
+    const partes = [];
+    if (m[1]) partes.push(el("span", { class: "prefixo", texto: m[1] }));
+    partes.push(el("span", { class: "moeda", texto: "R$" }));
+    partes.push(document.createTextNode(m[2]));
+    return el("span", { class: "preco" }, partes);
+  }
+
+  function montarProcedimentos() {
+    const lista = document.getElementById("lista-procedimentos");
+    for (const p of PROCEDIMENTOS) {
+      const temManutencao = Boolean(p.manutencao15 || p.manutencao20);
+      const item = el("li", { class: "proc" });
+
+      item.append(el("div", { class: "proc-topo" }, [
+        el("h3", { texto: p.nome }),
+        elementoPreco(p.aplicacao),
+      ]));
+
+      if (temManutencao) {
+        item.append(el("p", { class: "manut" }, [
+          el("span", { class: "rotulo", texto: "Manutenção" }),
+          el("span", {}, [
+            document.createTextNode("15 dias"),
+            el("span", { class: "valor", texto: p.manutencao15 }),
+          ]),
+          el("span", {}, [
+            document.createTextNode("20 dias"),
+            el("span", { class: "valor", texto: p.manutencao20 }),
+          ]),
+        ]));
+      }
+
+      if (p.nota) item.append(el("p", { class: "nota", texto: p.nota }));
+
+      const detalhe = temManutencao ? "aplicação, " + p.aplicacao : p.aplicacao;
+      const msgAplicacao = "Oi Amanda! Vi no site e queria agendar " + p.nome + " (" + detalhe + "). Tem horário?";
+      item.append(el("a", {
+        class: "botao",
+        href: linkWhatsApp(msgAplicacao),
+        target: "_blank",
+        rel: "noopener",
+        texto: "Agendar pelo WhatsApp",
+      }));
+
+      if (temManutencao) {
+        const msgManutencao = "Oi Amanda! Vi no site e queria agendar a manutenção do " + p.nome +
+          " (15 dias " + p.manutencao15 + " / 20 dias " + p.manutencao20 + "). Tem horário?";
+        item.append(el("p", { class: "manut-link" }, [
+          document.createTextNode("Já é cliente? "),
+          el("a", {
+            href: linkWhatsApp(msgManutencao),
+            target: "_blank",
+            rel: "noopener",
+            texto: "Agendar manutenção pelo WhatsApp",
+          }),
+        ]));
+      }
+
+      lista.append(item);
+    }
+  }
+
+  function montarGaleria() {
+    if (!FOTOS.length) return;
+    const grade = document.getElementById("grade-fotos");
+    for (const f of FOTOS) {
+      const figura = el("figure", f.antesDepois ? { class: "antes-depois" } : {}, [
+        el("img", { src: f.arquivo, alt: f.alt, loading: "lazy" }),
+      ]);
+      if (f.legenda) figura.append(el("figcaption", { texto: f.legenda }));
+      grade.append(figura);
+    }
+    document.getElementById("galeria").hidden = false;
+  }
+
+  montarProcedimentos();
+  montarGaleria();
+</script>
+</body>
+</html>
