@@ -7,6 +7,14 @@
 <meta name="description" content="Amanda Vilar, lash designer. Extensão de cílios e limpeza de pele em salão próprio, em São Paulo. Agende pelo WhatsApp.">
 <meta name="theme-color" content="#F2EFED">
 
+<!-- Ícone do site. Caminhos relativos, porque o site fica numa subpasta.
+     O .ico atende a aba e os favoritos, o SVG as telas de alta resolução,
+     e os PNG o atalho na tela inicial do celular. -->
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="logo/amanda-vilar-icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="logo/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
 <!-- Prévia do link no WhatsApp, Instagram e afins -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
@@ -138,13 +146,15 @@
     margin: 0 auto;
     max-width: 20rem;
   }
+  /* Parágrafo mais longo que o de cima: entrelinha um pouco maior e linha um
+     pouco mais curta, para a leitura não cansar. */
   .abertura .promessa {
     font-family: var(--serif);
     font-size: 1.1875rem;
-    line-height: 1.55;
+    line-height: 1.62;
     color: var(--texto-suave);
     margin: 0 auto;
-    max-width: 22rem;
+    max-width: 24rem;
   }
 
   /* ---------- Para agendar ---------- */
@@ -383,7 +393,7 @@
     .topo { padding-top: 4rem; }
     .abertura { padding-bottom: 5.5rem; }
     .abertura .apresenta { font-size: 2.125rem; max-width: 26rem; }
-    .abertura .promessa { font-size: 1.375rem; max-width: 28rem; }
+    .abertura .promessa { font-size: 1.3125rem; max-width: 31rem; }
     .proc { padding: 1.75rem 0 2rem; }
     .proc-linha { gap: 1.5rem; }
     .proc-foto { width: 6.5rem; height: 6.5rem; }
@@ -420,9 +430,9 @@
 
 <main>
   <section class="abertura">
-    <p class="apresenta">Lash designer e especialista em extensão de cílios. Estudante de biomedicina.</p>
+    <p class="apresenta">Sou Amanda Vilar, especialista em extensão de cílios e estudante de biomedicina.</p>
     <div class="ornamento" aria-hidden="true"><span></span></div>
-    <p class="promessa">Atendimento personalizado, unindo técnica, segurança e delicadeza para valorizar o olhar de cada cliente.</p>
+    <p class="promessa">Meu propósito é oferecer um atendimento personalizado, unindo técnica, segurança e delicadeza para criar resultados que valorizem o olhar e a autoestima das minhas clientes.</p>
   </section>
 
   <section class="agendar" aria-labelledby="t-agendar">
@@ -438,7 +448,7 @@
   <section class="procedimentos" aria-labelledby="t-proc">
     <div class="miolo">
       <h2 id="t-proc">Procedimentos</h2>
-      <p class="explica-manut">A manutenção é feita com pelo menos <span class="num">50</span>% dos fios. Se tiver menos que isso, é necessário remoção e nova aplicação. O valor de <span class="num">20</span> dias é maior porque há menos fios e mais aplicação.</p>
+      <p class="explica-manut">A manutenção é feita com pelo menos <span class="num">50</span>% dos fios. Se tiver menos que isso, é necessário remoção e nova aplicação.</p>
       <ul class="lista" id="lista-procedimentos"></ul>
     </div>
   </section>
