@@ -5,3 +5,6 @@ referencias/
 node_modules/
 Thumbs.db
 .DS_Store
+
+# Arquivo original da logo gerada por IA: fica só local, fora do site
+logo/Gemini_Generated_Image_*.jpg

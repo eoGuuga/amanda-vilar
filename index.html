@@ -22,7 +22,7 @@
 <meta property="og:title" content="Amanda Vilar | Extensão de cílios em São Paulo">
 <meta property="og:description" content="Amanda Vilar, lash designer. Extensão de cílios e limpeza de pele em salão próprio, em São Paulo. Agende pelo WhatsApp.">
 <meta property="og:url" content="https://eoguuga.github.io/amanda-vilar/">
-<meta property="og:image" content="https://eoguuga.github.io/amanda-vilar/logo/amanda-vilar-og.png">
+<meta property="og:image" content="https://eoguuga.github.io/amanda-vilar/logo/amanda-vilar-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Logo Amanda Vilar: monograma AV com cílios, em dourado sobre off-white">
@@ -118,7 +118,7 @@
 
   /* ---------- Topo ---------- */
   .topo { text-align: center; padding: 3rem 1.5rem 0.5rem; }
-  .logo { margin: 0 auto; width: min(14rem, 68vw); height: auto; }
+  .logo { margin: 0 auto; width: min(18.5rem, 82vw); height: auto; }
   /* A logo já traz o nome. O h1 fica só para leitores de tela e aparece se a logo não carregar. */
   .topo h1 {
     position: absolute;
@@ -180,15 +180,15 @@
   .proc-linha {
     display: flex;
     align-items: center;
-    gap: 0.875rem;
+    gap: 1rem;
   }
-  /* Mesmo arco da galeria, para a lista e as fotos combinarem */
+  /* Mesmo canto arredondado da galeria, para a lista e as fotos combinarem */
   .proc-foto {
     flex: 0 0 auto;
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
     object-fit: cover;
-    border-radius: 50% 50% 8px 8px / 50% 50% 8px 8px;
+    border-radius: 8px;
   }
   .proc-topo {
     flex: 1 1 auto;
@@ -296,35 +296,34 @@
 
   /* ---------- Galeria ---------- */
   .galeria { padding: 3.5rem 0 2rem; }
-  /* Uma coluna só: a foto precisa ser grande o bastante para a cliente ver o fio. */
+  /* Duas colunas: as fotos são pensadas em pares. */
   .grade {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
     margin-top: 2.25rem;
   }
   .grade figure { margin: 0; }
-  /* Arco no topo. O raio horizontal é metade da largura; o vertical é esse
-     mesmo valor lido como porcentagem da altura, que na proporção 4/5 dá 40%. */
   .grade img {
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: 50% 50% 12px 12px / 40% 40% 12px 12px;
+    border-radius: 8px;
   }
   .grade figcaption {
     font-size: 0.875rem;
     color: var(--texto-suave);
     text-align: center;
-    margin-top: 0.7rem;
+    margin-top: 0.4rem;
   }
   .antes-depois {
+    grid-column: 1 / -1;
     padding: 0.5rem 0.5rem 0.75rem;
     border: 1px solid var(--filete);
-    border-radius: 14px;
+    border-radius: 12px;
     background: rgba(246, 228, 147, 0.25);
   }
-  .antes-depois img { aspect-ratio: auto; border-radius: 10px; }
+  .antes-depois img { aspect-ratio: auto; border-radius: 8px; }
   .antes-depois figcaption { font-family: var(--serif); font-size: 1rem; color: var(--texto); margin-top: 0.7rem; }
 
   /* ---------- Rodapé ---------- */
@@ -402,12 +401,12 @@
     .abertura .promessa { font-size: 1.125rem; max-width: 29rem; }
     .proc { padding: 1.75rem 0 2rem; }
     .proc-linha { gap: 1.5rem; }
-    .proc-foto { width: 8rem; height: 8rem; }
+    .proc-foto { width: 7rem; height: 7rem; }
     .proc h3 { font-size: 1.375rem; }
     .preco { font-size: 1.375rem; }
     .botao { width: fit-content; min-width: 15rem; }
-    .grade { gap: 2.25rem; }
-    .grade figure { width: 100%; max-width: 26rem; margin: 0 auto; }
+    .grade { gap: 1rem; }
+    .antes-depois { justify-self: center; width: 100%; max-width: 24rem; }
     .rodape-corpo {
       display: flex;
       justify-content: center;
@@ -429,7 +428,7 @@
 <body>
 
 <header class="topo" id="topo">
-  <img class="logo" src="logo/amanda-vilar-logo.svg" alt="" width="224" height="130"
+  <img class="logo" src="logo/amanda-vilar-logo.jpg" alt="" width="900" height="688"
        onerror="this.hidden = true; this.closest('.topo').classList.add('sem-logo');">
   <h1>Amanda Vilar</h1>
 </header>
